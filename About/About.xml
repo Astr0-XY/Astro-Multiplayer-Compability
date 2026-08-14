@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Astro multiplayer compability</name>
+    <author>Astro</author>
+    <packageId>Astro.MPCompat</packageId>
+    <supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+    <modVersion>0.1</modVersion>
+    <modIconPath>About/Preview.png</modIconPath>
+    <modDependencies>
+        <li>
+            <packageId>rwmt.multiplayer</packageId>
+			<displayName>Multiplayer</displayName>
+			<downloadUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2606448745</downloadUrl>
+        </li>
+        <li>
+            <packageId>rwmt.multiplayercompatibility</packageId>
+            <displayName>Multiplayer Compatibility</displayName>
+            <downloadUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1629973374</downloadUrl>
+        </li>
+    </modDependencies>
+    <forceLoadAfter>
+        <li>rwmt.multiplayer</li>
+    </forceLoadAfter>
+    <description>Мод добавляет совместимость некоторых модов с мультиплеером</description>
+</ModMetaData>
