@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputPath>Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MultiplayerLoader">
+      <HintPath>C:\Programming\Rimworld\AstroMultiplayerCompability\References\MultiplayerLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MultiplayerAPI">
+      <HintPath>C:\Programming\Rimworld\AstroMultiplayerCompability\References\0MultiplayerAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>C:\Programming\Rimworld\AstroMultiplayerCompability\References\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+    <!-- Скрипт автоматического копирования мода в папку игры после сборки -->
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <PropertyGroup>
+      <RimWorldModsPath>C:\Steam\steamapps\common\RimWorld\Mods\AstroMultiplayerCompability</RimWorldModsPath>
+    </PropertyGroup>
+    
+    <Message Text="[Astro Build] Копирование файлов мода в RimWorld..." Importance="high" />
+    
+    <!-- Копируем скомпилированную DLL -->
+    <Copy SourceFiles="Assemblies\AstroMultiplayerCompability.dll" DestinationFolder="$(RimWorldModsPath)\Assemblies" />
+    
+    <!-- Копируем метаданные мода (папку About) -->
+    <ItemGroup>
+      <AboutFiles Include="About\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AboutFiles)" DestinationFiles="@(AboutFiles->'$(RimWorldModsPath)\About\%(RecursiveDir)%(Filename)%(Extension)')" />
+    
+    <Message Text="[Astro Build] Мод успешно скопирован в игру!" Importance="high" />
+  </Target>
+
+
+</Project>

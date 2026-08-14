@@ -1,0 +1,14 @@
+# --- Артефакты компиляции C# ---
+[Bb]in/
+[Oo]bj/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+.vscode/
+.vs/
+.history/
+*.log
+
+Assemblies/
