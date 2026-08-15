@@ -22,7 +22,7 @@ namespace AstroMultiplayerCompability
 
             InitializeModPatches();
 
-            Log.Message("[Astro MpCompat] Архитектурная система успешно запущена!");
+            Log.Message("[Astro MpCompat] мод успешно запущен");
         }
 
         private static void InitializeModPatches()
