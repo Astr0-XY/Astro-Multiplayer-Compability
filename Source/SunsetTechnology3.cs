@@ -11,6 +11,7 @@ namespace AstroMultiplayerCompability.Patches
         public SunsetPatch(ModContentPack mod)
         {
             MpCompat.RegisterLambdaMethod("SUNSET3.Building_TurretGun_cy", "GetGizmos", 0);
+            MpCompat.RegisterLambdaMethod("SUNSET3.Building_Excavator_cy", "GetGizmos", 0);
         }
     }
 }

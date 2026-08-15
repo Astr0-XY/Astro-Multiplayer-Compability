@@ -27,8 +27,6 @@ namespace AstroMultiplayerCompability
 
         private static void InitializeModPatches()
         {
-            // МАГИЯ: Мы берем типы данных БЕЗ вызова Assembly.GetExecutingAssembly()
-            // Используем встроенный метод Harmony, который гарантированно работает внутри Mono RimWorld
             var allTypes = AccessTools.GetTypesFromAssembly(typeof(MpInit).Assembly);
 
             if (allTypes == null)
@@ -40,14 +38,12 @@ namespace AstroMultiplayerCompability
 
             foreach (var type in allTypes)
             {
-                // Ищем наш кастомный маркер [MpCompatFor]
                 var compatAttribute = type.GetCustomAttributes(typeof(MpCompatForAttribute), false).FirstOrDefault() as MpCompatForAttribute;
                 
                 if (compatAttribute == null) continue;
 
                 string targetPackageId = compatAttribute.PackageId;
 
-                // Проверяем, включен ли этот мод в RimWorld
                 ModContentPack foundMod = LoadedModManager.RunningModsListForReading
                     .Find(m => m.PackageIdPlayerFacing.ToLower() == targetPackageId);
 
@@ -55,7 +51,6 @@ namespace AstroMultiplayerCompability
                 {
                     try
                     {
-                        // Создаем экземпляр патча
                         Activator.CreateInstance(type, new object[] { foundMod });
                         Log.Message($"[Astro MpCompat] Успешно применен патч для мода: {targetPackageId}");
                     }
