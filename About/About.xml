@@ -22,6 +22,7 @@
     </modDependencies>
     <forceLoadAfter>
         <li>rwmt.multiplayer</li>
+        <li>rwmt.multiplayercompatibility</li>
     </forceLoadAfter>
     <description>Мод добавляет совместимость некоторых модов с мультиплеером</description>
 </ModMetaData>
